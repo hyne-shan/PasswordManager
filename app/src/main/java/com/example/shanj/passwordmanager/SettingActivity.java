@@ -3,6 +3,7 @@ package com.example.shanj.passwordmanager;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -65,5 +66,35 @@ public class SettingActivity extends Activity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i("Tag", "3onpause");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i("Tag", "3onrestart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("Tag", "3onresume");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i("Tag", "3onstop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i("Tag", "3onDestroy");
     }
 }

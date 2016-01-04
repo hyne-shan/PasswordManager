@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -24,7 +26,7 @@ public class AddPassword extends AppCompatActivity {
     private Button setting;
     private SQLiteDatabase db;
     String informations[] = new String[]{"Email", "Outlook", "AppleID", "gmail","QQ", "微信", "微博", "AppleID", "gmail", "邮箱", "支付宝", "淘宝", "中国移动", "中国联通", "贴吧"};
-
+    private HomeWatcher homeWatcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,9 +91,59 @@ public class AddPassword extends AppCompatActivity {
 
             }
         });
+
+
+
+        //home监听
+        homeWatcher = new HomeWatcher(this);
+        homeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {
+            @Override
+            public void onHomePressed() {
+                System.exit(0);
+            }
+
+            @Override
+            public void onHomeLongPressed() {
+
+            }
+        });
+
+
     }
 
     private void insertData(SQLiteDatabase db, String info, String account, String password) {
         db.execSQL("insert into Mypassword values(null,?,?,?)", new String[]{info, account, password});
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i("Tag", "4onpause");
+        // 在onPause中停止监听，不然会报错的。
+        homeWatcher.stopWatch();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i("Tag", "4onrestart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("Tag", "4onresume");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i("Tag", "4onstop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i("Tag", "4onDestroy");
     }
 }

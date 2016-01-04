@@ -41,6 +41,10 @@ public class PasswordList extends AppCompatActivity {
     private TextView passwordtv;
     SimpleCursorAdapter adapter;
 
+    HomeWatcher homeWatcher;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +69,21 @@ public class PasswordList extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        homeWatcher = new HomeWatcher(this);
+        homeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {
+            @Override
+            public void onHomePressed() {
+                System.exit(0);
+            }
+
+            @Override
+            public void onHomeLongPressed() {
+            }
+        });
+        homeWatcher.startWatch();
+
 
 
         //        infoList = (ListView) findViewById(R.id.list);
@@ -209,6 +228,10 @@ public class PasswordList extends AppCompatActivity {
 
         );
 
+
+        // 在onPause中停止监听，不然会报错的。
+        homeWatcher.stopWatch();
+
     }
 
 
@@ -268,4 +291,29 @@ public class PasswordList extends AppCompatActivity {
             System.exit(0);
         }
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i("Tag", "1onpause");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i("Tag", "1onrestart");
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i("Tag", "1onstop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i("Tag", "1onDestroy");
+    }
+
+
 }
