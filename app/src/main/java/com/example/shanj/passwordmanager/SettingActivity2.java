@@ -14,10 +14,6 @@ import java.util.List;
 public class SettingActivity2 extends Activity {
 
     List<Integer> passList;
-
-    HomeWatcher homeWatcher;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,20 +48,6 @@ public class SettingActivity2 extends Activity {
                 }
             }
         });
-
-
-        homeWatcher = new HomeWatcher(this);
-        homeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {
-            @Override
-            public void onHomePressed() {
-                System.exit(0);
-            }
-
-            @Override
-            public void onHomeLongPressed() {
-
-            }
-        });
     }
 
 
@@ -73,8 +55,6 @@ public class SettingActivity2 extends Activity {
     protected void onPause() {
         super.onPause();
         Log.i("Tag","2onpause");
-        // 在onPause中停止监听，不然会报错的。
-        homeWatcher.stopWatch();
     }
 
     @Override

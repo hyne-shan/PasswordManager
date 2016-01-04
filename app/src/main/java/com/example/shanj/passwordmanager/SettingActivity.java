@@ -16,6 +16,7 @@ public class SettingActivity extends Activity {
     List<Integer> passList;
     SharedPreferences sp ;
     SharedPreferences.Editor editor;
+    HomeWatcher homeWatcher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,11 +67,26 @@ public class SettingActivity extends Activity {
                 }
             }
         });
+
+
+        homeWatcher = new HomeWatcher(this);
+        homeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {
+            @Override
+            public void onHomePressed() {
+                System.exit(0);
+            }
+
+            @Override
+            public void onHomeLongPressed() {
+
+            }
+        });
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        homeWatcher.stopWatch();
         Log.i("Tag", "3onpause");
     }
 

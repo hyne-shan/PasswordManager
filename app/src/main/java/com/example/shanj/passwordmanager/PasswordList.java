@@ -82,9 +82,8 @@ public class PasswordList extends AppCompatActivity {
             public void onHomeLongPressed() {
             }
         });
+
         homeWatcher.startWatch();
-
-
 
         //        infoList = (ListView) findViewById(R.id.list);
         //        db = SQLiteDatabase.openOrCreateDatabase(this.getFilesDir().toString()+"/mypassword.db",null);
@@ -228,10 +227,7 @@ public class PasswordList extends AppCompatActivity {
 
         );
 
-
-        // 在onPause中停止监听，不然会报错的。
         homeWatcher.stopWatch();
-
     }
 
 

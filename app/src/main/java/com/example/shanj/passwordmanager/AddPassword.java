@@ -107,6 +107,7 @@ public class AddPassword extends AppCompatActivity {
 
             }
         });
+        homeWatcher.startWatch();
 
 
     }
