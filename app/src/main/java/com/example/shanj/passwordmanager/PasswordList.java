@@ -41,7 +41,7 @@ public class PasswordList extends AppCompatActivity {
     private TextView passwordtv;
     SimpleCursorAdapter adapter;
 
-    HomeWatcher homeWatcher;
+   private HomeWatcher homeWatcher;
 
 
 
@@ -227,7 +227,7 @@ public class PasswordList extends AppCompatActivity {
 
         );
 
-        homeWatcher.stopWatch();
+
     }
 
 
@@ -298,6 +298,7 @@ public class PasswordList extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         Log.i("Tag", "1onrestart");
+        homeWatcher.stopWatch();
     }
     @Override
     protected void onStop() {

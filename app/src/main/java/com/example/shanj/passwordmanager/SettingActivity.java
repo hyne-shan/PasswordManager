@@ -86,7 +86,6 @@ public class SettingActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        homeWatcher.stopWatch();
         Log.i("Tag", "3onpause");
     }
 

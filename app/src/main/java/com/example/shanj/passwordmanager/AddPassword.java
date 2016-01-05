@@ -121,13 +121,14 @@ public class AddPassword extends AppCompatActivity {
         super.onPause();
         Log.i("Tag", "4onpause");
         // 在onPause中停止监听，不然会报错的。
-        homeWatcher.stopWatch();
+
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
         Log.i("Tag", "4onrestart");
+        homeWatcher.stopWatch();
     }
 
     @Override
