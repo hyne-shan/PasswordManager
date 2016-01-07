@@ -67,20 +67,6 @@ public class SettingActivity extends Activity {
                 }
             }
         });
-
-
-        homeWatcher = new HomeWatcher(this);
-        homeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {
-            @Override
-            public void onHomePressed() {
-                System.exit(0);
-            }
-
-            @Override
-            public void onHomeLongPressed() {
-
-            }
-        });
     }
 
     @Override
@@ -112,4 +98,5 @@ public class SettingActivity extends Activity {
         super.onDestroy();
         Log.i("Tag", "3onDestroy");
     }
+
 }

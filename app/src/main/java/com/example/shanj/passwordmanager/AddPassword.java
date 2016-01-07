@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -91,27 +91,16 @@ public class AddPassword extends AppCompatActivity {
 
             }
         });
-
-
-
-        //home监听
-        homeWatcher = new HomeWatcher(this);
-        homeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {
-            @Override
-            public void onHomePressed() {
-                System.exit(0);
-            }
-
-            @Override
-            public void onHomeLongPressed() {
-
-            }
-        });
-        homeWatcher.startWatch();
-
-
     }
-
+//    @Override
+//    public void onWindowFocusChanged(boolean hasFocus) {
+//
+//        // TODO Auto-generated method stub
+//        super.onWindowFocusChanged(hasFocus);
+//        if(hasFocus){
+//            addaccount.showDropDown();
+//        }
+//    }
     private void insertData(SQLiteDatabase db, String info, String account, String password) {
         db.execSQL("insert into Mypassword values(null,?,?,?)", new String[]{info, account, password});
     }
@@ -119,33 +108,33 @@ public class AddPassword extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        Log.i("Tag", "4onpause");
-        // 在onPause中停止监听，不然会报错的。
+        Log.i("Tag", "2onpause");
 
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.i("Tag", "4onrestart");
-        homeWatcher.stopWatch();
+        Log.i("Tag", "2onrestart");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("Tag", "4onresume");
+        Log.i("Tag", "2onresume");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.i("Tag", "4onstop");
+
+
+        Log.i("Tag", "2onstop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.i("Tag", "4onDestroy");
+        Log.i("Tag", "2onDestroy");
     }
 }

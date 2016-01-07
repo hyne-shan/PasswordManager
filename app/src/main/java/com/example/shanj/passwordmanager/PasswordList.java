@@ -48,6 +48,7 @@ public class PasswordList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i("Tag", "1onCreate");
         SharedPreferences sp = PasswordList.this.getSharedPreferences("password", PasswordList.this.MODE_PRIVATE);
         String pwd = sp.getString("password", null);
         if (!Constans.isFlag) {
@@ -72,9 +73,11 @@ public class PasswordList extends AppCompatActivity {
 
 
         homeWatcher = new HomeWatcher(this);
+
         homeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {
             @Override
             public void onHomePressed() {
+                finish();
                 System.exit(0);
             }
 
@@ -98,6 +101,7 @@ public class PasswordList extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        Log.i("Tag", "1onResume");
         db = SQLiteDatabase.openOrCreateDatabase(this.getFilesDir().toString() + "/mypassword.db", null);
         try {
             Cursor cursor = db.rawQuery("select * from Mypassword", null);
@@ -298,7 +302,6 @@ public class PasswordList extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         Log.i("Tag", "1onrestart");
-        homeWatcher.stopWatch();
     }
     @Override
     protected void onStop() {
@@ -310,7 +313,6 @@ public class PasswordList extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.i("Tag", "1onDestroy");
+        homeWatcher.stopWatch();
     }
-
-
 }

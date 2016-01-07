@@ -44,7 +44,7 @@ public class MailAutoCompleteTextView extends AutoCompleteTextView{
                     }
                 }
                 adapter.notifyDataSetChanged();
-                showDropDown();
+//                showDropDown();
             }
 
             @Override

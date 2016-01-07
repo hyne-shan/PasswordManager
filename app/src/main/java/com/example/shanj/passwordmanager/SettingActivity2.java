@@ -49,35 +49,4 @@ public class SettingActivity2 extends Activity {
             }
         });
     }
-
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i("Tag","2onpause");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.i("Tag", "2onrestart");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i("Tag", "2onresume");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.i("Tag", "2onstop");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.i("Tag", "2onDestroy");
-    }
 }
